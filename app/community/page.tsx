@@ -10,6 +10,8 @@ import { CommunityCreators } from "@/components/community/CommunityCreators";
 import { MemberMarketing } from "@/components/community/MemberMarketing";
 import { BlogNotesSection } from "@/components/community/BlogNotesSection";
 import { RoadmapSection } from "@/components/community/RoadmapSection";
+import { CommitHistory } from "@/components/community/CommitHistory";
+import { UpcomingSessions } from "@/components/community/UpcomingSessions";
 import { FeaturedRepos } from "@/components/community/FeaturedRepos";
 import { RecordedSessions } from "@/components/community/RecordedSessions";
 import { FreeTools } from "@/components/community/FreeTools";
@@ -79,6 +81,8 @@ export default function CommunityPage() {
                     <MemberMarketing />
                     <BlogNotesSection />
                     <RoadmapSection />
+                    <CommitHistory />
+                    <UpcomingSessions />
                     <FeaturedRepos />
                     <RecordedSessions />
                     <FreeTools />
@@ -169,47 +173,49 @@ export default function CommunityPage() {
                                 href={channel.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={cn(
-                                    "relative z-10 flex flex-col items-center text-center p-8 m-[1px] md:m-[2px] rounded-[15px] bg-gradient-to-br from-card to-background hover:bg-accent/50 dark:hover:bg-black/80 transition-all h-[calc(100%-2px)] md:h-[calc(100%-4px)]",
-                                    channel.bg
-                                )}
+                                className="relative z-10 block h-full w-full p-[1px] md:p-[2px] rounded-2xl"
                             >
-                                <div className={cn("mb-6 p-4 rounded-full bg-background/50 backdrop-blur-sm", channel.color)}>
-                                    <channel.icon className="w-10 h-10" />
-                                </div>
-
-                                <h3 className="text-2xl font-bold mb-3 text-brand-text font-mono group-hover:text-brand-primary transition-colors">
-                                    {channel.title}
-                                </h3>
-
-                                <p className="text-brand-text/60 mb-8 leading-relaxed flex-grow">
-                                    {channel.description}
-                                </p>
-
-                                {/* "People Stack" for Discord - Social Proof */}
-                                {channel.id === 'discord' && (
-                                    <div className="flex items-center justify-center -space-x-3 mb-6">
-                                        {[1, 2, 3, 4, 5].map((i) => (
-                                            <div key={i} className="relative w-8 h-8 rounded-full border-2 border-card overflow-hidden ring-2 ring-background">
-                                                <Image
-                                                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 40}&backgroundColor=b6e3f4`}
-                                                    alt="Community member"
-                                                    fill
-                                                    sizes="32px"
-                                                    unoptimized
-                                                    className="object-cover"
-                                                />
-                                            </div>
-                                        ))}
-                                        <div className="relative flex items-center justify-center w-8 h-8 rounded-full border-2 border-card bg-brand-primary/20 text-[10px] font-bold text-brand-primary ring-2 ring-background">
-                                            +5k
-                                        </div>
+                                <div className={cn(
+                                    "relative h-full w-full flex flex-col items-center text-center p-8 rounded-[15px] bg-gradient-to-br from-card to-background hover:bg-accent/50 dark:hover:bg-black/80 transition-all",
+                                    channel.bg
+                                )}>
+                                    <div className={cn("mb-6 p-4 rounded-full bg-background/50 backdrop-blur-sm", channel.color)}>
+                                        <channel.icon className="w-10 h-10" />
                                     </div>
-                                )}
 
-                                <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-text/80 font-mono group-hover:text-brand-primary transition-colors">
-                                    <Radio size={16} className="animate-pulse" />
-                                    {channel.action}
+                                    <h3 className="text-2xl font-bold mb-3 text-brand-text font-mono group-hover:text-brand-primary transition-colors">
+                                        {channel.title}
+                                    </h3>
+
+                                    <p className="text-brand-text/60 mb-8 leading-relaxed flex-grow">
+                                        {channel.description}
+                                    </p>
+
+                                    {/* "People Stack" for Discord - Social Proof */}
+                                    {channel.id === 'discord' && (
+                                        <div className="flex items-center justify-center -space-x-3 mb-6">
+                                            {[1, 2, 3, 4, 5].map((i) => (
+                                                <div key={i} className="relative w-8 h-8 rounded-full border-2 border-card overflow-hidden ring-2 ring-background">
+                                                    <Image
+                                                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 40}&backgroundColor=b6e3f4`}
+                                                        alt="Community member"
+                                                        fill
+                                                        sizes="32px"
+                                                        unoptimized
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                            ))}
+                                            <div className="relative flex items-center justify-center w-8 h-8 rounded-full border-2 border-card bg-brand-primary/20 text-[10px] font-bold text-brand-primary ring-2 ring-background">
+                                                +5k
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-text/80 font-mono group-hover:text-brand-primary transition-colors">
+                                        <Radio size={16} className="animate-pulse" />
+                                        {channel.action}
+                                    </div>
                                 </div>
                             </a>
                         </motion.div>

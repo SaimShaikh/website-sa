@@ -53,7 +53,21 @@ export function RoadmapSection() {
 
             <div className="relative">
                 {/* Connecting Line */}
-                <div className="absolute top-0 bottom-0 left-6 md:left-1/2 md:-translate-x-1/2 w-px bg-white/10" />
+                <div className="absolute top-0 bottom-0 left-6 md:left-1/2 md:-translate-x-1/2 w-px bg-brand-primary/20 overflow-hidden">
+                    <motion.div
+                        className="absolute top-0 w-full h-32"
+                        style={{
+                            background: "linear-gradient(to bottom, transparent, rgba(0, 194, 255, 0.8), transparent)",
+                            boxShadow: "0 0 20px 2px rgba(0, 194, 255, 0.4)",
+                        }}
+                        animate={{ top: ["-100%", "200%"] }}
+                        transition={{
+                            duration: 5,
+                            ease: "linear",
+                            repeat: Infinity,
+                        }}
+                    />
+                </div>
 
                 <div className="space-y-12">
                     {ROADMAP.map((phase, i) => (

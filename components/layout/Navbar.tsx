@@ -42,7 +42,7 @@ export function Navbar() {
                 "transition-all duration-500"
             )}>
                 <div className={cn(
-                    "relative flex flex-nowrap items-center gap-3 rounded-2xl border px-3 py-2.5 sm:px-4 md:px-6 md:py-3 transition-all duration-300 overflow-hidden",
+                    "relative flex flex-nowrap items-center gap-2 rounded-2xl border px-3 py-2.5 sm:px-4 md:px-6 md:py-3.5 transition-all duration-300 overflow-hidden",
                     // Glass/Cyber style
                     "bg-background/60 backdrop-blur-xl border-brand-primary/30",
                     "hover:border-brand-primary/60 hover:shadow-[0_0_15px_rgba(5,202,255,0.15)]",
@@ -52,7 +52,7 @@ export function Navbar() {
                     <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden opacity-5 dark:opacity-20 bg-scanline" />
 
                     {/* Logo Section */}
-                    <div className="relative z-10 min-w-0 flex-1 md:flex-none">
+                    <div className="relative z-10 min-w-0 flex-1 md:w-[272px] md:flex-none">
                         <Link href="/" className="group flex min-w-0 items-center gap-2 sm:gap-3">
                             <div className="relative flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg border border-brand-primary/30 bg-brand-primary/10 transition-all duration-300 group-hover:bg-brand-primary/20 sm:h-10 sm:w-10">
                                 <Image
@@ -77,7 +77,7 @@ export function Navbar() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-1 relative z-10">
+                    <nav className="relative z-10 hidden flex-1 items-center justify-center gap-1 md:flex">
                         {NAV_LINKS.map((link) => (
                             <NavLink
                                 key={link.label}
@@ -90,8 +90,8 @@ export function Navbar() {
                     </nav>
 
                     {/* Right Section */}
-                    <div className="relative z-10 ml-auto flex shrink-0 items-center gap-2 sm:gap-3 md:gap-6">
-                        <ThemeToggle className="scale-90 sm:scale-100" />
+                    <div className="relative z-10 ml-auto flex shrink-0 items-center gap-2 sm:gap-3 md:w-[96px] md:justify-end">
+                        <ThemeToggle className="scale-90 sm:scale-100 md:scale-100" />
 
                         {/* Mobile Menu Button - Cyber Button */}
                         <button
@@ -157,6 +157,7 @@ function NavLink({
             rel={external ? "noopener noreferrer" : undefined}
             className={cn(
                 "group relative px-4 py-2 font-mono text-sm font-medium transition-colors",
+                "md:px-3 lg:px-4",
                 isActive ? "text-brand-primary" : "text-brand-text/70 hover:text-brand-primary"
             )}
         >

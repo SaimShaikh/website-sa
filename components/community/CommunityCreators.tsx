@@ -53,10 +53,13 @@ export function CommunityCreators() {
 
                             <div className={`relative rounded-full border-4 overflow-hidden mb-6 transition-colors ${creator.isCenter ? 'w-32 h-32 border-amber-500/50 group-hover:border-amber-400' : 'w-24 h-24 border-white/10 group-hover:border-brand-primary/50'
                                 }`}>
-                                <img
+                                <Image
                                     src={creator.avatar}
                                     alt={creator.name}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    sizes="128px"
+                                    unoptimized
+                                    className="object-cover"
                                 />
                             </div>
 

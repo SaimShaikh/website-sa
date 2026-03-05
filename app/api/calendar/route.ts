@@ -1,16 +1,27 @@
 import { NextResponse } from 'next/server';
 
-const CALENDAR_URL = process.env.GOOGLE_CALENDAR_URL || "https://calendar.google.com/calendar/ical/8107b2b7fd5058278af8e2d4bb7f146b8c2eae4a759488be400949d8ddc946cc%40group.calendar.google.com/public/basic.ics";
+const CALENDAR_URL = process.env.GOOGLE_CALENDAR_URL;
 
 export async function GET() {
+    if (!CALENDAR_URL) {
+        console.error("GOOGLE_CALENDAR_URL is not configured");
+        return NextResponse.json(
+            { error: "Calendar integration is not configured." },
+            { status: 500 }
+        );
+    }
+
     try {
         const response = await fetch(CALENDAR_URL, {
-            cache: 'no-store'
+            next: { revalidate: 300 },
+            headers: {
+                "User-Agent": "EdgeOpsLabs/1.0 (+calendar-proxy)",
+            },
         });
 
         if (!response.ok) {
             return NextResponse.json(
-                { error: "Failed to fetch from Google Calendar" },
+                { error: "Failed to fetch from calendar provider." },
                 { status: response.status }
             );
         }
@@ -18,7 +29,10 @@ export async function GET() {
         const icsText = await response.text();
         return new NextResponse(icsText, {
             status: 200,
-            headers: { 'Content-Type': 'text/calendar' }
+            headers: {
+                "Content-Type": "text/calendar; charset=utf-8",
+                "Cache-Control": "s-maxage=300, stale-while-revalidate=600",
+            },
         });
 
     } catch (error) {

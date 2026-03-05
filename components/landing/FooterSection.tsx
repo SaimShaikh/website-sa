@@ -76,7 +76,7 @@ export const FooterSection = () => {
                                 <FooterLink href="https://github.com/EdgeOpslabs" label="GitHub" external />
                             </li>
                             <li>
-                                <FooterLink href="https://discord.gg/edgeopslabs" label="Discord" external />
+                                <FooterLink href="https://discord.gg/Gy3c2uDwMQ" label="Discord" external />
                             </li>
                             <li>
                                 <FooterLink href="https://youtube.com/@iemafzalhassan" label="YouTube" external />

@@ -11,7 +11,7 @@ const CREATORS = siteConfig.community.creators;
 
 export function CommunityCreators() {
     return (
-        <section className="py-16 mb-8">
+        <section className="py-16 md:py-24 border-t border-brand-primary/10 mb-8">
             <div className="flex items-center gap-3 mb-16 justify-center text-center">
                 <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
                     <Star size={24} className="fill-amber-500/50" />
